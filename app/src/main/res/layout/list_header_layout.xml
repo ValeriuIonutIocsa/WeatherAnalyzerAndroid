@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:weightSum="9">
+
+    <TextView
+        android:text="@string/headerCityName"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewCityName"
+        android:layout_weight="3"/>
+
+    <TextView
+        android:text="@string/headerCurrentHighTemp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewCurrentHighTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/headerCurrentLowTemp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewCurrentLowTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/headerHistoricalHighTemp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewHistoricalHighTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/headerHistoricalLowTemp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewHistoricalLowTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/headerDiffHighTemp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewDiffHighTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/headerDiffLowTemp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/textViewDiffLowTemp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

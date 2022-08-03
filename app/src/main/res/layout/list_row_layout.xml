@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:weightSum="9">
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewCityName"
+        android:layout_weight="3"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewCurrentHighTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewCurrentLowTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewHistoricalHighTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewHistoricalLowTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewDiffHighTemp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:id="@+id/textViewDiffLowTemp"
+        android:layout_weight="1"/>
+
+</LinearLayout>
