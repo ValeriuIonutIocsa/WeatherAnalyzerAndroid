@@ -3,7 +3,7 @@ package com.utils.log.progress;
 public abstract class AbstractProgressIndicator implements ProgressIndicator {
 
 	@Override
-	public final void update(
+	public void update(
 			final int count,
 			final int total) {
 

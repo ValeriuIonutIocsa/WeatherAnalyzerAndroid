@@ -17,30 +17,32 @@ public class FragmentProgress extends Fragment {
 	private final MainActivity mainActivity;
 
 	public FragmentProgress(
-			MainActivity mainActivity) {
+			final MainActivity mainActivity) {
 
 		this.mainActivity = mainActivity;
 	}
 
 	@Override
 	public View onCreateView(
-			LayoutInflater inflater,
-			ViewGroup container,
-			Bundle savedInstanceState) {
+			final LayoutInflater inflater,
+			final ViewGroup container,
+			final Bundle savedInstanceState) {
+
 		return inflater.inflate(R.layout.fragment_progress, container, false);
 	}
 
+	@Override
 	public void onViewCreated(
-			@NonNull View view,
-			Bundle savedInstanceState) {
+			@NonNull final View view,
+			final Bundle savedInstanceState) {
 
 		super.onViewCreated(view, savedInstanceState);
 
-		WeakReference<MainActivity> wrMainActivity = new WeakReference<>(mainActivity);
-		ProgressBar progressBar = view.findViewById(R.id.progressBar);
-		TextView textView = view.findViewById(R.id.textView);
-		WeakReference<ProgressBar> wrProgressBar = new WeakReference<>(progressBar);
-		WeakReference<TextView> wrTextView = new WeakReference<>(textView);
+		final WeakReference<MainActivity> wrMainActivity = new WeakReference<>(mainActivity);
+		final ProgressBar progressBar = view.findViewById(R.id.progressBar);
+		final TextView textView = view.findViewById(R.id.textView);
+		final WeakReference<ProgressBar> wrProgressBar = new WeakReference<>(progressBar);
+		final WeakReference<TextView> wrTextView = new WeakReference<>(textView);
 		new AsyncTaskLoad(wrMainActivity, wrProgressBar, wrTextView).execute();
 	}
 }

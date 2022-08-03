@@ -18,6 +18,7 @@ import com.utils.io.IoUtils;
 import com.utils.io.PathUtils;
 import com.utils.io.folder_creators.FactoryFolderCreator;
 import com.utils.log.Logger;
+import com.utils.log.progress.ProgressIndicatorConsole;
 import com.utils.net.proxy.url_conn.FactoryUrlConnectionOpener;
 import com.utils.net.proxy.url_conn.UrlConnectionOpener;
 
@@ -52,7 +53,7 @@ final class WeatherAnalyzerCli {
 			urlConnectionOpener.configureProperties();
 
 			final List<City> cityList = ParserCities.createCityList();
-			ParserCities.parseWeather(cityList, threadCount);
+			ParserCities.parseWeather(cityList, threadCount, ProgressIndicatorConsole.INSTANCE);
 
 			try (PrintStream printStream = new PrintStream(
 					new BufferedOutputStream(Files.newOutputStream(outputFilePath)))) {

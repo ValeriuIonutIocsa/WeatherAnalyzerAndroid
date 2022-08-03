@@ -18,28 +18,30 @@ public class FragmentList extends Fragment {
 	private final List<City> cityList;
 
 	public FragmentList(
-			List<City> cityList) {
+			final List<City> cityList) {
 
 		this.cityList = cityList;
 	}
 
 	@Override
 	public View onCreateView(
-			LayoutInflater inflater,
-			ViewGroup container,
-			Bundle savedInstanceState) {
+			final LayoutInflater inflater,
+			final ViewGroup container,
+			final Bundle savedInstanceState) {
+
 		return inflater.inflate(R.layout.fragment_list, container, false);
 	}
 
+	@Override
 	public void onViewCreated(
-			@NonNull View view,
-			Bundle savedInstanceState) {
+			@NonNull final View view,
+			final Bundle savedInstanceState) {
 
 		super.onViewCreated(view, savedInstanceState);
 
-		ListView listView = view.findViewById(R.id.list_view);
+		final ListView listView = view.findViewById(R.id.list_view);
 
-		ArrayAdapterCity adapter = new ArrayAdapterCity(
+		final ArrayAdapterCity adapter = new ArrayAdapterCity(
 				view.getContext(), R.layout.list_row_layout, cityList);
 		listView.setAdapter(adapter);
 	}

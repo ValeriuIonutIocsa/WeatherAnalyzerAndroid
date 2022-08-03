@@ -8,6 +8,8 @@ import java.util.List;
 import com.personal.weather.cities.ParserCities;
 import com.personal.weather.cities.data.City;
 import com.utils.log.Logger;
+import com.utils.log.progress.AbstractProgressIndicator;
+import com.utils.log.progress.ProgressIndicator;
 import com.utils.net.proxy.url_conn.FactoryUrlConnectionOpener;
 import com.utils.net.proxy.url_conn.UrlConnectionOpener;
 
@@ -25,9 +27,11 @@ class AsyncTaskLoad extends AsyncTask<Void, Integer, Void> {
 	private List<City> cityList;
 
 	AsyncTaskLoad(
-			WeakReference<MainActivity> wrMainActivity,
-			WeakReference<ProgressBar> wrProgressBar,
-			WeakReference<TextView> wrTextView) {
+			final WeakReference<MainActivity> wrMainActivity,
+			final WeakReference<ProgressBar> wrProgressBar,
+			final WeakReference<TextView> wrTextView) {
+
+		super();
 
 		this.wrMainActivity = wrMainActivity;
 		this.wrProgressBar = wrProgressBar;
@@ -36,13 +40,13 @@ class AsyncTaskLoad extends AsyncTask<Void, Integer, Void> {
 
 	@Override
 	protected Void doInBackground(
-			Void... voids) {
+			final Void... voids) {
 
 		final UrlConnectionOpener urlConnectionOpener = FactoryUrlConnectionOpener.newInstance();
 		urlConnectionOpener.configureProperties();
 
 		try {
-			Instant start = Instant.now();
+			final Instant start = Instant.now();
 			Logger.printProgress("starting WeatherAnalyzer...");
 
 			try (InputStream inputStream =
@@ -50,8 +54,20 @@ class AsyncTaskLoad extends AsyncTask<Void, Integer, Void> {
 				cityList = ParserCities.createCityList(inputStream);
 			}
 
-			Logger.printDebugLine("1111 " + cityList.size());
-			ParserCities.parseWeather(cityList, 12);
+			final int cityCount = cityList.size();
+			publishProgress(0, cityCount);
+
+			final ProgressIndicator progressIndicator = new AbstractProgressIndicator() {
+
+				@Override
+				public void update(
+						final double v) {
+
+					final int value = (int) (v * cityCount);
+					publishProgress(value, cityCount);
+				}
+			};
+			ParserCities.parseWeather(cityList, 12, progressIndicator);
 
 			Logger.printFinishMessage(start);
 
@@ -64,30 +80,30 @@ class AsyncTaskLoad extends AsyncTask<Void, Integer, Void> {
 
 	@Override
 	protected void onProgressUpdate(
-			Integer... values) {
+			final Integer... values) {
 
 		super.onProgressUpdate(values);
 
-		int progress = values[0];
-		int max = values[1];
+		final int progress = values[0];
+		final int max = values[1];
 
 		wrProgressBar.get().setMin(0);
 		wrProgressBar.get().setMax(max);
 		wrProgressBar.get().setProgress(progress);
 
-		String text = "loading " + progress + " / " + max;
+		final String text = "loading " + progress + " / " + max;
 		wrTextView.get().setText(text);
 	}
 
 	@Override
 	protected void onPostExecute(
-			Void aVoid) {
+			final Void aVoid) {
 
 		super.onPostExecute(aVoid);
 
-		FragmentList fragmentList = new FragmentList(cityList);
+		final FragmentList fragmentList = new FragmentList(cityList);
 
-		FragmentManager supportFragmentManager =
+		final FragmentManager supportFragmentManager =
 				wrMainActivity.get().getSupportFragmentManager();
 		supportFragmentManager.beginTransaction()
 				.replace(R.id.frame_layout_fragment, fragmentList)

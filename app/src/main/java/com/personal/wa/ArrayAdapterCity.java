@@ -17,9 +17,9 @@ class ArrayAdapterCity extends ArrayAdapter<City> {
 	private final int resource;
 
 	ArrayAdapterCity(
-			Context context,
-			int resource,
-			List<City> cityList) {
+			final Context context,
+			final int resource,
+			final List<City> cityList) {
 
 		super(context, resource, cityList);
 
@@ -29,14 +29,14 @@ class ArrayAdapterCity extends ArrayAdapter<City> {
 
 	@Override
 	public View getView(
-			int position,
+			final int position,
 			View convertView,
-			ViewGroup parent) {
+			final ViewGroup parent) {
 
 		ViewHolder viewHolder = new ViewHolder();
 		if (convertView == null) {
 
-			LayoutInflater inflater = LayoutInflater.from(context);
+			final LayoutInflater inflater = LayoutInflater.from(context);
 			convertView = inflater.inflate(resource, parent, false);
 			viewHolder.textViewCityName = convertView.findViewById(R.id.textViewCityName);
 			viewHolder.textViewCurrentHighTemp = convertView.findViewById(R.id.textViewCurrentHighTemp);
@@ -52,22 +52,22 @@ class ArrayAdapterCity extends ArrayAdapter<City> {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		City city = getItem(position);
+		final City city = getItem(position);
 		if (city != null) {
 
-			String cityName = city.getCityName();
+			final String cityName = city.getCityName();
 			viewHolder.textViewCityName.setText(cityName);
-			String currentHighTempString = city.createCurrentHighTempString();
+			final String currentHighTempString = city.createCurrentHighTempString();
 			viewHolder.textViewCurrentHighTemp.setText(currentHighTempString);
-			String currentLowTempString = city.createCurrentLowTempString();
+			final String currentLowTempString = city.createCurrentLowTempString();
 			viewHolder.textViewCurrentLowTemp.setText(currentLowTempString);
-			String historicalHighTempString = city.createHistoricalHighTempString();
+			final String historicalHighTempString = city.createHistoricalHighTempString();
 			viewHolder.textViewHistoricalHighTemp.setText(historicalHighTempString);
-			String historicalLowTempString = city.createHistoricalLowTempString();
+			final String historicalLowTempString = city.createHistoricalLowTempString();
 			viewHolder.textViewHistoricalLowTemp.setText(historicalLowTempString);
-			String diffHighTempString = city.createDiffHighTempString();
+			final String diffHighTempString = city.createDiffHighTempString();
 			viewHolder.textViewDiffHighTemp.setText(diffHighTempString);
-			String diffLowTempString = city.createDiffLowTempString();
+			final String diffLowTempString = city.createDiffLowTempString();
 			viewHolder.textViewDiffLowTemp.setText(diffLowTempString);
 		}
 

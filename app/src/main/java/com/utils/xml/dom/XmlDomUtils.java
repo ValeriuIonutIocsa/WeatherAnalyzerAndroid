@@ -127,7 +127,7 @@ public final class XmlDomUtils {
 
 		final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 		saveXmlFile(document, omitXmlDeclaration, indentAmount, byteArrayOutputStream);
-		return byteArrayOutputStream.toString(StandardCharsets.UTF_8.name());
+		return byteArrayOutputStream.toString(StandardCharsets.UTF_8);
 	}
 
 	@ApiMethod

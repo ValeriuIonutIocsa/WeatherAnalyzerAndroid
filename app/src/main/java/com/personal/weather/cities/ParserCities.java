@@ -12,7 +12,7 @@ import com.personal.weather.cities.data.FactoryCity;
 import com.utils.concurrency.progress.ConcurrencyUtilsShowProgressRegular;
 import com.utils.io.IoUtils;
 import com.utils.log.Logger;
-import com.utils.log.progress.ProgressIndicatorConsole;
+import com.utils.log.progress.ProgressIndicator;
 import com.utils.log.progress.ProgressIndicators;
 import com.utils.xml.dom.XmlDomUtils;
 
@@ -36,7 +36,7 @@ public final class ParserCities {
 	}
 
 	public static List<City> createCityList(
-            final InputStream inputStream) throws Exception {
+			final InputStream inputStream) throws Exception {
 
 		final List<City> cityList = new ArrayList<>();
 		final Document document = XmlDomUtils.openDocument(inputStream);
@@ -54,7 +54,8 @@ public final class ParserCities {
 
 	public static void parseWeather(
 			final List<City> cityList,
-			final int threadCountParam) {
+			final int threadCountParam,
+			final ProgressIndicator progressIndicator) {
 
 		try {
 			final List<Runnable> runnableList = new ArrayList<>();
@@ -62,7 +63,8 @@ public final class ParserCities {
 				runnableList.add(() -> city.parseWeather(null));
 			}
 
-			ProgressIndicators.setInstance(ProgressIndicatorConsole.INSTANCE);
+			ProgressIndicators.setInstance(progressIndicator);
+
 			final int threadCount = Math.max(1, threadCountParam);
 			final int showProgressInterval = 1;
 			final ConcurrencyUtilsShowProgressRegular concurrencyUtilsShowProgressRegular =
