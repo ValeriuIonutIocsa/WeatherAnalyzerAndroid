@@ -87,7 +87,7 @@ public class City {
 					if (printStream != null) {
 						printStream.println(line);
 					}
-					if ("<div class=\"temp-history content-module non-ad\">".equals(line.trim())) {
+					if (line.contains("<div class=\"temp-history content-module")) {
 						inside = true;
 					}
 					if (inside) {
