@@ -34,6 +34,7 @@ android {
             testLogging.exceptionFormat = 'full'
         }
     }
+    namespace 'com.personal.wa'
 }
 
 dependencies {
